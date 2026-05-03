@@ -1,6 +1,6 @@
 # Babel, effective CMMS made simple
 
-Streamlining CMMS through tailor-made solutions
+Streamlining interventions, history and documentation management, a tailor-made solution.
 
 ## pillars [todo]
 
