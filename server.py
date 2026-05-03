@@ -15,7 +15,7 @@ from fastapi.responses import (
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from tools import clean
+from utils.scripts import clean
 clean()
 
 from schemas import UserResponse

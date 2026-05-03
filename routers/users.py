@@ -1,3 +1,4 @@
+from typing import Annotated
 from fastapi import (
     FastAPI,
     Request,
@@ -24,17 +25,29 @@ from schemas import (
 )
 
 
+templates = Jinja2Templates(directory="templates")
 router = APIRouter()
+
+
+@router.get("/register", name="user_register_view")
+def render_user_register(req: Request) -> HTMLResponse:
+    return templates.TemplateResponse(
+        req,
+        "user_register.html",
+        {"title": "add new user"},
+    )
 
 
 @router.post("/register", name="user_register")
 @router.post("/signup", name="user_signup")
-# def signup_user(user: Annotated[UserCreate, Form()], userImage: Annotated[bytes|None, File()] = None):
-# def signup_user(user: Annotated[UserCreate, Form()]):
-def signup_user(
-    user: UserCreate = Form(),
-    userImage: UploadFile = File(),
+def register_user(
+    user: Annotated[UserCreate, Form()],
+) -> UserResponse:
+    return user
+
+
+@router.post("/add_picture", name="user_add_picture")
+def user_add_picture(
+    userImage: UploadFile | None = None,
 ):
-    print(user)
-    print(userImage)
-    return "done"
+    return {"userImage": userImage}

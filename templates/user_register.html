@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block style %}
+{% endblock style %}
+
+{% block content %}
+<!-- <form method="post" action="{{ url_for("user_register") }}" enctype="application/x-www-form-urlencoded"> -->
+<form method="post" action="{{ url_for("user_register") }}" enctype="multipart/form-data" id="add_user_form">
+   <label for="username">username</label>
+   <input type="text" name="username" /> 
+
+   <label for="password">password</label>
+   <input type="password" name="password" /> 
+
+   <label for="email">email</label>
+   <input type="text" name="email" /> 
+
+   <label for="role">role</label>
+   <input type="text" name="role" /> 
+
+   <input type="submit" value="create user" id="user_register_button"/>
+<form>
+
+<form method="post" action="{{ url_for("user_add_picture") }}" enctype="multipart/form-data" id="add_picture_form">
+    <input type="file" id="imgOfUser" name="userImage" />
+    <input type="text" name="username" />
+<form>
+
+<script src="{{ url_for('static', path='js/user_register.js') }}"></script>
+
+{% endblock content %}

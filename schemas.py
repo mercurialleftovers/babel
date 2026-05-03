@@ -9,12 +9,12 @@ class Role(Enum):
     ENGINEER = "engineer"
 
 class UserResponse(BaseModel):
-    username: str = Field(min_length=6, max_length=25)
+    username: str = Field(min_length=4, max_length=25)
     role: Role
     email: EmailStr
     
 
 class UserCreate(UserResponse):
     password: str = Field(min_length=8, max_length=40)
-    image_path: str = Field(min_length=8, max_length=20)
+    image_filename: str | None = None
 
